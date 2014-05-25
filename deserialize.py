@@ -305,6 +305,9 @@ def extract_public_key(bytes, version='\x00'):
     decoded = [ x for x in script_GetOp(bytes) ]
   except struct.error:
     return "(None)"
+  except IndexError:
+    return "(None)"
+    
 
   # non-generated TxIn transactions push a signature
   # (seventy-something bytes) and then their public key
